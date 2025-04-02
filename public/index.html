@@ -1,47 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>100 Reasons to Love You</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 Reasons to Love You</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <div class="notebook">
-        <div class="page" id="page-1">
-            <h2>100 Reasons to Love You</h2>
-            <ul>
-                <li>Your beautiful eyes</li>
-                <li>Your radiant smile</li>
-                <li>Your strong will to get stronger</li>
-                <li>Your kindness towards everyone</li>
-                <li>The way you always push forward</li>
-                <li>Your laughter, it’s contagious</li>
-                <li>Your passion for boxing</li>
-                <li>Your determination to never give up</li>
-                <li>The way you care about me</li>
-                <li>Your adorable quirks</li>
-            </ul>
-            <button onclick="nextPage()">Next Page</button>
-        </div>
-        <div class="page hidden" id="page-2">
-            <h2>More Reasons to Love You</h2>
-            <ul>
-                <li>Your warm hugs</li>
-                <li>Your honesty</li>
-                <li>Your love for adventure</li>
-                <li>Your supportive nature</li>
-                <li>The way you brighten my day</li>
-                <li>Your thoughtful surprises</li>
-                <li>Your unwavering loyalty</li>
-                <li>Your patience</li>
-                <li>Your ability to inspire me</li>
-                <li>The way you make me feel special</li>
-            </ul>
-            <button onclick="prevPage()">Previous Page</button>
-            <button onclick="nextPage()">Next Page</button>
-        </div>
+  <div class="notebook">
+    <!-- Pages 1-10 (dynamically filled via JS) -->
+    <div class="page" id="page-1">
+      <h2>100 Reasons to Love You</h2>
+      <ul id="reasons-page-1"></ul>
+      <button onclick="nextPage()">Next Page</button>
     </div>
-    <script src="script.js"></script>
+    <div class="page hidden" id="page-2">
+      <h2>More Reasons to Love You</h2>
+      <ul id="reasons-page-2"></ul>
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+    </div>
+    <!-- Pages 3-10 (same structure) -->
+    <div class="page hidden" id="page-3">
+      <h2>Reasons Continued</h2>
+      <ul id="reasons-page-3"></ul>
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+    </div>
+    <!-- Add pages 4-10 here (copy-paste and increment IDs) -->
+    <div class="page hidden" id="page-4">
+      <h2>Reasons Continued</h2>
+      <ul id="reasons-page-4"></ul>
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+    </div>
+    <div class="page hidden" id="page-5">
+      <h2>Reasons Continued</h2>
+      <ul id="reasons-page-5"></ul>
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+    </div>
+    <div class="page hidden" id="page-6">
+      <h2>Reasons Continued</h2>
+      <ul id="reasons-page-6"></ul>
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+    </div>
+    <div class="page hidden" id="page-7">
+      <h2>Reasons Continued</h2>
+      <ul id="reasons-page-7"></ul>
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+    </div>
+    <div class="page hidden" id="page-8">
+      <h2>Reasons Continued</h2>
+      <ul id="reasons-page-8"></ul>
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+    </div>
+    <div class="page hidden" id="page-9">
+      <h2>Reasons Continued</h2>
+      <ul id="reasons-page-9"></ul>
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+    </div>
+    <div class="page hidden" id="page-10">
+      <h2>Reasons Continued</h2>
+      <ul id="reasons-page-10"></ul>
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -29,7 +29,51 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add page numbers to counter
   document.getElementById("current-page").textContent = currentPage
   document.getElementById("total-pages").textContent = totalPages
+
+  // Set up music controls
+  setupMusicControls()
 })
+
+// Set up music controls
+function setupMusicControls() {
+  const music = document.getElementById("background-music")
+  const toggleButton = document.getElementById("toggle-music")
+  const musicOnIcon = toggleButton.querySelector(".music-on")
+  const musicOffIcon = toggleButton.querySelector(".music-off")
+
+  // Set initial volume
+  music.volume = 0.5
+
+  // Some browsers require user interaction before playing audio
+  // This will attempt to play the music, but won't force it if browser policy prevents it
+  try {
+    const playPromise = music.play()
+
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        console.log("Auto-play prevented by browser. User needs to interact with the page first.")
+        // Show the music is off initially since it couldn't auto-play
+        musicOnIcon.classList.add("hidden")
+        musicOffIcon.classList.remove("hidden")
+      })
+    }
+  } catch (e) {
+    console.log("Error playing music:", e)
+  }
+
+  // Toggle music on/off
+  toggleButton.addEventListener("click", () => {
+    if (music.paused) {
+      music.play()
+      musicOffIcon.classList.add("hidden")
+      musicOnIcon.classList.remove("hidden")
+    } else {
+      music.pause()
+      musicOnIcon.classList.add("hidden")
+      musicOffIcon.classList.remove("hidden")
+    }
+  })
+}
 
 // Create floating hearts in the background
 function createFloatingHearts() {
@@ -131,6 +175,7 @@ function nextPage() {
 
     // Update arrows
     updateArrows()
+
   }, 400)
 }
 
@@ -155,6 +200,7 @@ function prevPage() {
 
     // Update arrows
     updateArrows()
+
   }, 400)
 }
 
@@ -169,3 +215,5 @@ function updateArrows() {
   rightArrow.style.opacity = currentPage === totalPages ? "0.3" : "1"
   rightArrow.style.pointerEvents = currentPage === totalPages ? "none" : "auto"
 }
+
+

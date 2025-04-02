@@ -11,6 +11,28 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
+  <!-- Background Music -->
+  <audio id="background-music" loop autoplay>
+    <source src="music.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  
+  <!-- Music Controls -->
+  <div class="music-controls">
+    <button id="toggle-music" aria-label="Toggle Music">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="music-on">
+        <path d="M9 18V5l12-2v13"></path>
+        <circle cx="6" cy="18" r="3"></circle>
+        <circle cx="18" cy="16" r="3"></circle>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="music-off hidden">
+        <line x1="1" y1="1" x2="23" y2="23"></line>
+        <path d="M9 9v3l3-3v7.5"></path>
+        <path d="M18 13c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1z"></path>
+      </svg>
+    </button>
+  </div>
+  
   <div class="background">
     <div class="hearts"></div>
   </div>
@@ -81,7 +103,7 @@
       <div class="page hidden" id="page-7">
         <div class="page-content">
           <div class="page-header">
-            <h2>Reasons Continued</h2>
+            <h2>Lips special</h2>
             <div class="heart-decoration"></div>
           </div>
           <ul id="reasons-page-7"></ul>
@@ -91,7 +113,7 @@
       <div class="page hidden" id="page-8">
         <div class="page-content">
           <div class="page-header">
-            <h2>Reasons Continued</h2>
+            <h2>Gym special</h2>
             <div class="heart-decoration"></div>
           </div>
           <ul id="reasons-page-8"></ul>
@@ -101,7 +123,7 @@
       <div class="page hidden" id="page-9">
         <div class="page-content">
           <div class="page-header">
-            <h2>Reasons Continued</h2>
+            <h2>Box special</h2>
             <div class="heart-decoration"></div>
           </div>
           <ul id="reasons-page-9"></ul>
@@ -135,8 +157,10 @@
       <span id="current-page">1</span>/<span id="total-pages">10</span>
     </div>
   </div>
-  
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+        Your browser doesn't support audio.
+    </audio>
   <script src="script.js"></script>
 </body>
 </html>
-

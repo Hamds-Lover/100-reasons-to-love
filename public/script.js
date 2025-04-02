@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function renderPage(pageNum) {
   try {
-    const response = await axios.get(`http://localhost:3000/api/reasons/${pageNum}`);
+    const response = await axios.get(`https://one00-reasons-to-love.onrender.com/api/reasons/${pageNum}`);
     const reasons = response.data;
     const listElement = document.getElementById(`reasons-page-${pageNum}`);
     if (listElement) {

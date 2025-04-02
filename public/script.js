@@ -1,9 +1,6 @@
 let currentPage = 1
 const totalPages = 10
 
-// Import axios
-import axios from "axios"
-
 document.addEventListener("DOMContentLoaded", () => {
   // Set up event listeners for navigation arrows
   const leftArrow = document.getElementById("left-arrow")
@@ -33,75 +30,43 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("current-page").textContent = currentPage
   document.getElementById("total-pages").textContent = totalPages
 
-  // Set up music controls and start playing immediately
+  // Set up music controls
   setupMusicControls()
-
-  // Add a click event to the body to start music (browsers require user interaction)
-  document.body.addEventListener(
-    "click",
-    function bodyClick() {
-      playBackgroundMusic()
-      // Remove the event listener after first click
-      document.body.removeEventListener("click", bodyClick)
-    },
-    { once: true },
-  )
 })
-
-// Play background music
-function playBackgroundMusic() {
-  const music = document.getElementById("background-music")
-  music.volume = 0.5
-
-  const playPromise = music.play()
-
-  if (playPromise !== undefined) {
-    playPromise
-      .then((_) => {
-        // Music started playing successfully
-        console.log("Music started playing")
-        document.querySelector(".music-on").classList.remove("hidden")
-        document.querySelector(".music-off").classList.add("hidden")
-      })
-      .catch((error) => {
-        // Auto-play was prevented
-        console.log("Auto-play prevented:", error)
-        document.querySelector(".music-on").classList.add("hidden")
-        document.querySelector(".music-off").classList.remove("hidden")
-      })
-  }
-}
 
 // Set up music controls
 function setupMusicControls() {
   const music = document.getElementById("background-music")
   const toggleButton = document.getElementById("toggle-music")
-  const musicOnIcon = document.querySelector(".music-on")
-  const musicOffIcon = document.querySelector(".music-off")
+  const musicOnIcon = toggleButton.querySelector(".music-on")
+  const musicOffIcon = toggleButton.querySelector(".music-off")
 
-  // Set initial state
-  if (music.paused) {
-    musicOnIcon.classList.add("hidden")
-    musicOffIcon.classList.remove("hidden")
-  } else {
-    musicOnIcon.classList.remove("hidden")
-    musicOffIcon.classList.add("hidden")
+  // Set initial volume
+  music.volume = 0.5
+
+  // Some browsers require user interaction before playing audio
+  // This will attempt to play the music, but won't force it if browser policy prevents it
+  try {
+    const playPromise = music.play()
+
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        console.log("Auto-play prevented by browser. User needs to interact with the page first.")
+        // Show the music is off initially since it couldn't auto-play
+        musicOnIcon.classList.add("hidden")
+        musicOffIcon.classList.remove("hidden")
+      })
+    }
+  } catch (e) {
+    console.log("Error playing music:", e)
   }
 
   // Toggle music on/off
   toggleButton.addEventListener("click", () => {
     if (music.paused) {
-      const playPromise = music.play()
-      if (playPromise !== undefined) {
-        playPromise
-          .then((_) => {
-            musicOffIcon.classList.add("hidden")
-            musicOnIcon.classList.remove("hidden")
-          })
-          .catch((error) => {
-            console.log("Play prevented:", error)
-          })
-      }
+      music.play()
+      musicOffIcon.classList.add("hidden")
+      musicOnIcon.classList.remove("hidden")
     } else {
       music.pause()
       musicOnIcon.classList.add("hidden")
@@ -210,6 +175,7 @@ function nextPage() {
 
     // Update arrows
     updateArrows()
+
   }, 400)
 }
 
@@ -234,6 +200,7 @@ function prevPage() {
 
     // Update arrows
     updateArrows()
+
   }, 400)
 }
 
@@ -248,4 +215,5 @@ function updateArrows() {
   rightArrow.style.opacity = currentPage === totalPages ? "0.3" : "1"
   rightArrow.style.pointerEvents = currentPage === totalPages ? "none" : "auto"
 }
+
 

@@ -4,74 +4,139 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>100 Reasons to Love You</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-  <div class="notebook">
-    <!-- Pages 1-10 (dynamically filled via JS) -->
-    <div class="page" id="page-1">
-      <h2>100 Reasons to Love You</h2>
-      <ul id="reasons-page-1"></ul>
-      <button onclick="nextPage()">Next Page</button>
+  <div class="background">
+    <div class="hearts"></div>
+  </div>
+  
+  <div class="book-container">
+    <div class="notebook">
+      <!-- Pages 1-10 (dynamically filled via JS) -->
+      <div class="page" id="page-1">
+        <div class="page-content">
+          <div class="page-header">
+            <h2>100 Reasons to Love You</h2>
+            <div class="heart-decoration"></div>
+          </div>
+          <ul id="reasons-page-1"></ul>
+        </div>
+      </div>
+      
+      <div class="page hidden" id="page-2">
+        <div class="page-content">
+          <div class="page-header">
+            <h2>More Reasons to Love You</h2>
+            <div class="heart-decoration"></div>
+          </div>
+          <ul id="reasons-page-2"></ul>
+        </div>
+      </div>
+      
+      <div class="page hidden" id="page-3">
+        <div class="page-content">
+          <div class="page-header">
+            <h2>Reasons Continued</h2>
+            <div class="heart-decoration"></div>
+          </div>
+          <ul id="reasons-page-3"></ul>
+        </div>
+      </div>
+      
+      <div class="page hidden" id="page-4">
+        <div class="page-content">
+          <div class="page-header">
+            <h2>Reasons Continued</h2>
+            <div class="heart-decoration"></div>
+          </div>
+          <ul id="reasons-page-4"></ul>
+        </div>
+      </div>
+      
+      <div class="page hidden" id="page-5">
+        <div class="page-content">
+          <div class="page-header">
+            <h2>Reasons Continued</h2>
+            <div class="heart-decoration"></div>
+          </div>
+          <ul id="reasons-page-5"></ul>
+        </div>
+      </div>
+      
+      <div class="page hidden" id="page-6">
+        <div class="page-content">
+          <div class="page-header">
+            <h2>Reasons Continued</h2>
+            <div class="heart-decoration"></div>
+          </div>
+          <ul id="reasons-page-6"></ul>
+        </div>
+      </div>
+      
+      <div class="page hidden" id="page-7">
+        <div class="page-content">
+          <div class="page-header">
+            <h2>Reasons Continued</h2>
+            <div class="heart-decoration"></div>
+          </div>
+          <ul id="reasons-page-7"></ul>
+        </div>
+      </div>
+      
+      <div class="page hidden" id="page-8">
+        <div class="page-content">
+          <div class="page-header">
+            <h2>Reasons Continued</h2>
+            <div class="heart-decoration"></div>
+          </div>
+          <ul id="reasons-page-8"></ul>
+        </div>
+      </div>
+      
+      <div class="page hidden" id="page-9">
+        <div class="page-content">
+          <div class="page-header">
+            <h2>Reasons Continued</h2>
+            <div class="heart-decoration"></div>
+          </div>
+          <ul id="reasons-page-9"></ul>
+        </div>
+      </div>
+      
+      <div class="page hidden" id="page-10">
+        <div class="page-content">
+          <div class="page-header">
+            <h2>Reasons Continued</h2>
+            <div class="heart-decoration"></div>
+          </div>
+          <ul id="reasons-page-10"></ul>
+        </div>
+      </div>
     </div>
-    <div class="page hidden" id="page-2">
-      <h2>More Reasons to Love You</h2>
-      <ul id="reasons-page-2"></ul>
-      <button onclick="prevPage()">Previous</button>
-      <button onclick="nextPage()">Next</button>
+    
+    <div class="nav-arrow left" id="left-arrow">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
     </div>
-    <!-- Pages 3-10 (same structure) -->
-    <div class="page hidden" id="page-3">
-      <h2>Reasons Continued</h2>
-      <ul id="reasons-page-3"></ul>
-      <button onclick="prevPage()">Previous</button>
-      <button onclick="nextPage()">Next</button>
+    
+    <div class="nav-arrow right" id="right-arrow">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
     </div>
-    <!-- Add pages 4-10 here (copy-paste and increment IDs) -->
-    <div class="page hidden" id="page-4">
-      <h2>Reasons Continued</h2>
-      <ul id="reasons-page-4"></ul>
-      <button onclick="prevPage()">Previous</button>
-      <button onclick="nextPage()">Next</button>
-    </div>
-    <div class="page hidden" id="page-5">
-      <h2>Reasons Continued</h2>
-      <ul id="reasons-page-5"></ul>
-      <button onclick="prevPage()">Previous</button>
-      <button onclick="nextPage()">Next</button>
-    </div>
-    <div class="page hidden" id="page-6">
-      <h2>Reasons Continued</h2>
-      <ul id="reasons-page-6"></ul>
-      <button onclick="prevPage()">Previous</button>
-      <button onclick="nextPage()">Next</button>
-    </div>
-    <div class="page hidden" id="page-7">
-      <h2>Reasons Continued</h2>
-      <ul id="reasons-page-7"></ul>
-      <button onclick="prevPage()">Previous</button>
-      <button onclick="nextPage()">Next</button>
-    </div>
-    <div class="page hidden" id="page-8">
-      <h2>Reasons Continued</h2>
-      <ul id="reasons-page-8"></ul>
-      <button onclick="prevPage()">Previous</button>
-      <button onclick="nextPage()">Next</button>
-    </div>
-    <div class="page hidden" id="page-9">
-      <h2>Reasons Continued</h2>
-      <ul id="reasons-page-9"></ul>
-      <button onclick="prevPage()">Previous</button>
-      <button onclick="nextPage()">Next</button>
-    </div>
-    <div class="page hidden" id="page-10">
-      <h2>Reasons Continued</h2>
-      <ul id="reasons-page-10"></ul>
-      <button onclick="prevPage()">Previous</button>
-      <button onclick="nextPage()">Next</button>
+    
+    <div class="page-counter">
+      <span id="current-page">1</span>/<span id="total-pages">10</span>
     </div>
   </div>
-  <script src="/script.js"></script>
+  
+  <script src="script.js"></script>
 </body>
 </html>
+
